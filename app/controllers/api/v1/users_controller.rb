@@ -13,7 +13,7 @@ class Api::V1::UsersController < ApplicationController
       render json: {user: @user, jwt: issue_token(payload)}
       ## send some message for success
     else
-      ## send some error message
+      render json: {message: 'could not create user'}
     end
   end
 
