@@ -11,7 +11,6 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       payload = { user_id: @user.id}
       render json: {user: @user, jwt: issue_token(payload)}
-      ## send some message for success
     else
       render json: {message: 'could not create user'}
     end
