@@ -6,6 +6,18 @@ class Api::V1::UsersController < ApplicationController
     render json: users
   end
 
+  def create
+    @user = User.new(username: params[:username], password:params[:password], name:params[:name])
+    if @user.save
+      payload = { user_id: @user.id}
+      render json: {user: @user, jwt: issue_token(payload)}
+      ## send some message for success
+    else
+      ## send some error message
+    end
+  end
+
+
   def show
     user = User.find(id: params[:id])
     render json: user
