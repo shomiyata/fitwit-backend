@@ -5,6 +5,7 @@ class Api::V1::ExercisesController < ApplicationController
   end
 
   def index
+  	byebug
     username = JSON.parse(request.headers["username"])["username"]
     exercises = Exercise.where({username: username})
     render json: {exercises: exercises}

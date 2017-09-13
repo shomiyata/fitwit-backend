@@ -17,8 +17,15 @@ class Api::V1::UsersController < ApplicationController
   end
 
 
-  def show
-    user = User.find(id: params[:id])
+  # def show
+  #   user = User.find(id: params[:id])
+  #   render json: user
+  # end
+
+  def update
+    # byebug
+    user = User.find(params[:id])
+    user.update(days_a_week: params[:daysAWeek], length_of_program: params[:programLength])
     render json: user
   end
 

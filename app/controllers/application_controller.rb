@@ -28,6 +28,18 @@ class ApplicationController < ActionController::API
      user_id = decoded_hash[0]["user_id"]
      user = User.find(user_id)
    else
+    render json: {message: "No user!"}
+   end
+ end 
+
+ def find_current_user
+   decoded_hash = decoded_token(params[:token])
+   if !decoded_hash.empty?
+     user_id = decoded_hash[0]["user_id"]
+     user = User.find(user_id)
+     render json: user
+   else
+    render json: {message: "No user!"}
    end
  end
 
