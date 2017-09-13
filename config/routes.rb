@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   post '/current_user', to: 'application#find_current_user'
-  
+
   namespace :api do
     namespace :v1 do
         get '/users', to: 'users#index'
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         post '/signup', to: 'users#create'
         get '/exercises', to: 'exercises#index'
         post '/exercises', to: 'exercises#create'
+        get '/exercises/:userid', to: 'exercises#user_exercises'
     end
   end
 end
